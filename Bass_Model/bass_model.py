@@ -16,21 +16,21 @@ class BassDiffusionModel:
         return future_sales
     
     def build_model(self):
-        # Prepare the data for regression
+        # Let's prepare the data for regression
         dates = pd.to_datetime(self.data['date'])
         sales = self.data['Sales']
         
-        # Convert dates to numeric representation (e.g., days since the first date)
+        # Let's convert dates to numeric representation (e.g., days since the first date)
         dates_numeric = (dates - dates.min()).dt.days
         
-        # Fit a linear regression model
+        # Fiting a linear regression model
         model = LinearRegression()
         model.fit(dates_numeric.values.reshape(-1, 1), sales)
         
         return model
     
     def predict_sales(self, model):
-        # Generate future sales predictions based on the regression model
+        # We generate future sales predictions based on the regression model
         future_dates = pd.date_range(start=self.data['date'].iloc[-1], periods=12, freq='M')
         future_dates_numeric = (future_dates - pd.to_datetime(self.data['date']).min()).days
         
@@ -39,18 +39,18 @@ class BassDiffusionModel:
         return future_sales
     
     def visualize_regression(self):
-        # Visualize the regression model fit
+        # Visualizing the regression model fit
         dates = pd.to_datetime(self.data['date'])
         sales = self.data['Sales']
         
-        # Convert dates to numeric representation (e.g., days since the first date)
+        # Converting dates to numeric representation (e.g., days since the first date)
         dates_numeric = (dates - dates.min()).dt.days
         
-        # Fit a linear regression model
+        # Fiting a linear regression model
         model = LinearRegression()
         model.fit(dates_numeric.values.reshape(-1, 1), sales)
         
-        # Plot the actual sales data and the regression line
+        # Plotting the actual sales data and the regression line
         plt.figure(figsize=(8, 6))
         plt.scatter(dates, sales, color='b', label='Actual Sales')
         plt.plot(dates, model.predict(dates_numeric.values.reshape(-1, 1)), color='r', label='Regression Line')
