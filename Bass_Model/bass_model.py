@@ -7,10 +7,9 @@ class BassDiffusionModel:
         self.data = pd.read_csv(data_file)
     
     def problemsolver(self):
-        # Implement the problem-solving functionality here
-        # You can modify this method to solve a specific marketing problem using the Bass Diffusion Model
         
-        # For example, let's assume the problem is to predict future sales based on the Bass Diffusion Model
+        
+       
         model = self.build_model()
         future_sales = self.predict_sales(model)
         
