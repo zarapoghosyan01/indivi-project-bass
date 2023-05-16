@@ -4,20 +4,23 @@ The Bass diffusion model is a tool that uses mathematics to estimate how quickly
 
 ## How to run the code
 ```python
-from bass import BassDiffusionModel
+from bass_model import BassDiffusionModel
+import os
 
-# Create a BassDiffusionModel object with your data file
-model = BassDiffusionModel('data.csv')
+current_directory = os.getcwd()
 
-# Solve a specific marketing problem using the Bass Diffusion Model
-future_sales = model.problemsolver()
+data_file = os.path.join(current_directory, "salesmonthly.csv")  # Appending the file name "salesmonthly.csv" to the current directory
 
-# Generate a summary output of your data
-summary = model.summary()
+bass_model = BassDiffusionModel(data_file)
 
-# Visualize the regression model fit
-model.visualize_regression()
+future_sales = bass_model.problemsolver()  # Solving the marketing problem
+
+bass_model.visualize_regression()  # Generating the visualization
+
+summary_output = bass_model.summary()  # Obtaining the summary output
 ```
+
+##
 
 
 
